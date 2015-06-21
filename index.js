@@ -29,24 +29,18 @@ function getOptions () {
 
 function errorify (res) {
   const cwd = process.cwd()
-  const msgs = []
+  const count = res.errorCount + res.warningCount
+  const err = new Error('' + count + (count === 1 ? ' issue' : ' issues') + ' found:')
+  err.stack = '' + err.message
 
   res.results.forEach(function (result) {
     result.messages.forEach(function (message) {
-      msgs.push('' +
+      err.stack += ('\n    ' +
         result.filePath.replace(cwd, '').replace(/^\//, '') +
         ':' + message.line + ':' + message.column + ': ' +
         message.message + ' (' + message.ruleId + ')')
     })
   })
-
-  const err = new Error(msgs.join('\n'))
-
-  // clean up the stack by removing mocha-standard out of it.
-  err.stack = err.stack
-    .replace(/^.*\n/, '') // first line
-    .replace(/.*node_modules\/mocha-standard\/.*\n/, '')
-    .replace(/.*node_modules\/standard\/.*\n/, '')
 
   return err
 }
