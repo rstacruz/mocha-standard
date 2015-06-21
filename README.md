@@ -10,7 +10,11 @@ This offers a finer alterantive to adding *standard* into package.json's `script
 
 (Your speed gains may be a bit different from my Pentium II, of course.)
 
+----
+
 ![](https://raw.githubusercontent.com/rstacruz/mocha-standard/gh-pages/screenshot.png)
+
+----
 
 [![Status](http://img.shields.io/travis/rstacruz/mocha-standard/master.svg)](https://travis-ci.org/rstacruz/mocha-standard/ "See test builds")
 
