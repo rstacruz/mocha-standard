@@ -6,6 +6,8 @@
 * Use `mocha --watch` to recheck for style failures. `standard` is used programatically, removing a huge overhead in re-running it repeatedly with `--watch`.
 * Painlessly integrate standard into your travisci.org tests.
 
+[![Status](http://img.shields.io/travis/rstacruz/mocha-standard/master.svg)](https://travis-ci.org/rstacruz/mocha-standard/ "See test builds")
+
 <br>
 
 ## Usage
