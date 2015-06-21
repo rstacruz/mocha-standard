@@ -29,20 +29,24 @@ function getOptions () {
 
 function errorify (res) {
   const cwd = process.cwd()
-  const err = new Error('Failed standard test')
+  const msgs = []
 
   res.results.forEach(function (result) {
     result.messages.forEach(function (message) {
-      err.message += '\n      ' +
-        result.filePath.replace(cwd, '') +
+      msgs.push('' +
+        result.filePath.replace(cwd, '').replace(/^\//, '') +
         ':' + message.line + ':' + message.column + ': ' +
-        message.message + ' (' + message.ruleId + ')'
-
-      // clean up the stack by removing mocha-standard out of it.
-      err.stack = err.stack.replace(/.*node_modules\/mocha-standard\/.*\n/, '')
-      err.stack = err.stack.replace(/.*node_modules\/standard\/.*\n/, '')
+        message.message + ' (' + message.ruleId + ')')
     })
   })
+
+  const err = new Error(msgs.join('\n'))
+
+  // clean up the stack by removing mocha-standard out of it.
+  err.stack = err.stack
+    .replace(/^.*\n/, '') // first line
+    .replace(/.*node_modules\/mocha-standard\/.*\n/, '')
+    .replace(/.*node_modules\/standard\/.*\n/, '')
 
   return err
 }
