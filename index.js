@@ -37,6 +37,9 @@ function errorify (res) {
         result.filePath.replace(cwd, '') +
         ':' + message.line + ':' + message.column + ': ' +
         message.message + ' (' + message.rule + ')'
+
+      // clean up the stack by removing mocha-standard out of it.
+      err.stack = err.stack.replace(/.*node_modules\/mocha-standard.*\n/, '')
     })
   })
 
