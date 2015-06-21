@@ -1,3 +1,7 @@
+## v0.0.5 - Jun 21, 2015
+
+* Slightly improve output appearance again.
+
 ## v0.0.4 - Jun 21, 2015
 
 * Slightly improve output appearance.
