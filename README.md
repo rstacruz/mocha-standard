@@ -26,7 +26,13 @@ This offers a finer alternative to adding *standard* into package.json's `script
 
 ## Usage
 
-Add this test file to your Mocha suite:
+Install it:
+
+```sh
+npm install --save-dev mocha-standard standard
+```
+
+Then add this test file to your Mocha suite:
 
 ```js
 /* test/standard_test.js */
@@ -35,10 +41,15 @@ it('conforms to standard', require('mocha-standard'))
 
 <br>
 
-## Installation
+## Thanks
 
-```sh
-npm install --save-dev mocha-standard standard
-```
+**mocha-standard** © 2015+, Rico Sta. Cruz. Released under the [MIT] License.<br>
+Authored and maintained by Rico Sta. Cruz with help from contributors ([list][contributors]).
 
+> [ricostacruz.com](http://ricostacruz.com) &nbsp;&middot;&nbsp;
+> GitHub [@rstacruz](https://github.com/rstacruz) &nbsp;&middot;&nbsp;
+> Twitter [@rstacruz](https://twitter.com/rstacruz)
+
+[MIT]: http://mit-license.org/
+[contributors]: http://github.com/rstacruz/mocha-standard/contributors
 [standard]: https://www.npmjs.com/package/standard
