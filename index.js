@@ -1,10 +1,13 @@
 'use strict'
 
-const path = require('path')
+var path = require('path')
 
-module.exports = function (done) {
-  const standard = require('standard')
-  const options = getOptions()
+module.exports = mochaStandard
+mochaStandard.module = 'standard'
+
+function mochaStandard (done) {
+  var standard = require(mochaStandard.module)
+  var options = getOptions()
 
   standard.lintFiles(options.files || [], options, function (err, res) {
     if (err) return done(err)
@@ -18,8 +21,9 @@ module.exports = function (done) {
  */
 
 function getOptions () {
-  const pkg = require(path.join(process.cwd(), 'package.json'))
-  const params = pkg.standard && pkg.standard || {}
+  var standard = mochaStandard.module
+  var pkg = require(path.join(process.cwd(), 'package.json'))
+  var params = pkg[standard] && pkg[standard] || {}
   return params
 }
 
@@ -28,9 +32,9 @@ function getOptions () {
  */
 
 function errorify (res) {
-  const cwd = process.cwd()
-  const count = res.errorCount + res.warningCount
-  const err = new Error('' + count + (count === 1 ? ' issue' : ' issues') + ' found:')
+  var cwd = process.cwd()
+  var count = res.errorCount + res.warningCount
+  var err = new Error('' + count + (count === 1 ? ' issue' : ' issues') + ' found:')
   err.stack = '' + err.message
 
   res.results.forEach(function (result) {
