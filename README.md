@@ -41,6 +41,23 @@ it('conforms to standard', require('mocha-standard'))
 
 <br>
 
+## Semicolons
+
+To use [semistandard] instead, use:
+
+```sh
+npm install --save-dev mocha-standard semistandard
+```
+
+```js
+/* test/standard_test.js */
+it('conforms to standard', require('mocha-standard/semistandard'))
+```
+
+[semistandard]: https://github.com/Flet/semistandard
+
+<br>
+
 ## Thanks
 
 **mocha-standard** © 2015+, Rico Sta. Cruz. Released under the [MIT] License.<br>
