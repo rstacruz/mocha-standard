@@ -1,7 +1,7 @@
 {
   "name": "mocha-standard",
   "description": "Integrate the JS standard to your Mocha tests",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Rico Sta. Cruz <rico@ricostacruz.com>",
   "bugs": {
     "url": "https://github.com/rstacruz/mocha-standard/issues"
