@@ -43,7 +43,10 @@ To configure what files to consume:
 
 ```js
 var standard = require('mocha-standard')
-it('conforms to standard', standard.files([ 'index.js', 'test/*.js' ]))
+
+it('conforms to standard', standard.files([
+  'index.js', 'test/*.js'
+]))
 ```
 
 <br>
