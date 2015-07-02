@@ -1,15 +1,18 @@
-'use strict'
-
-var path = require('path')
-
 module.exports = mochaStandard
 mochaStandard.module = 'standard'
 
+/*
+ * Runs `standard.lintFiles`, and throws meaningful errors if it fails.
+ * Typically used to plug into mocha's `it()`.
+ */
+
 function mochaStandard (done) {
   var standard = require(mochaStandard.module)
-  var options = getOptions()
 
-  standard.lintFiles(options.files || [], options, function (err, res) {
+  var files = this.files || []
+  var options = this.options || {}
+
+  standard.lintFiles(files, options, function (err, res) {
     if (err) return done(err)
     if (res.errorCount === 0 && res.warningCount === 0) return done()
     done(errorify(res))
@@ -17,14 +20,21 @@ function mochaStandard (done) {
 }
 
 /*
- * return custom `standard` options in package.json.
+ * Changes `files` to be passed onto standard.lintFiles
+ *
+ *     it('is clean',
+ *       require('mocha-standard').files([
+ *         'index.js', 'test/*.js'
+ *       ]))
+ *
+ * Or pass options:
+ *
+ *       require('mocha-standard').files('index.js', { ... })
  */
 
-function getOptions () {
-  var standard = mochaStandard.module
-  var pkg = require(path.join(process.cwd(), 'package.json'))
-  var params = pkg[standard] && pkg[standard] || {}
-  return params
+mochaStandard.files = function (files, options) {
+  if (!Array.isArray(files)) files = [files]
+  return this.bind({ files: files, options: options })
 }
 
 /*

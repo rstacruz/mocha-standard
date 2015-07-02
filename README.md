@@ -39,6 +39,13 @@ Then add this test file to your Mocha suite:
 it('conforms to standard', require('mocha-standard'))
 ```
 
+To configure what files to consume:
+
+```js
+var standard = require('mocha-standard')
+it('conforms to standard', standard.files([ 'index.js', 'test/*.js' ]))
+```
+
 <br>
 
 ## Semicolons

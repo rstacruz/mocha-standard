@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/rstacruz/mocha-standard#readme",
   "devDependencies": {
+    "chai": "^3.0.0",
     "mocha": "^2.2.5",
+    "sinon": "^1.15.4",
     "standard": "^4.3.1"
   }
 }
