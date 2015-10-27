@@ -51,6 +51,20 @@ it('conforms to standard', standard.files([
 
 <br>
 
+## Timeouts
+
+Since the first run of a standard test takes a while to execute (sometimes more than Mocha's default 2 second timeout), it'd be wise to change the timeout for your mocha-standard tests. You can do this using `this.timeout` inside a `describe()` block, or with `--timeout` in `mocha.opts`.
+
+```js
+describe('coding style', function () {
+  this.timeout(5000)
+
+  it('conforms to standard', require('mocha-standard'))
+})
+```
+
+<br>
+
 ## Globals
 
 To specify global variables, pass `{ global: [...] }` into `.files()`. This is especially useful for Mocha test files. (Be sure you're using standard 5.0.0 or above.)
